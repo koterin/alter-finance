@@ -24,6 +24,8 @@ func StartTelegramBot(ctx context.Context) {
 	//log.SetFormatter(&log.JSONFormatter{})
 	log.SetLevel(level)
 
+	log.Info("initialized team: ", config.Team)
+
 	settings := tb.Settings{
 		Token: config.Args.TG_BOT_KEY,
 		Poller: &tb.LongPoller{
