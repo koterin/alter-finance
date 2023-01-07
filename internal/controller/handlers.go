@@ -31,6 +31,8 @@ func OnStart() tb.HandlerFunc {
 			return c.Send(entity.TextInternalError)
 		}
 
+		log.Info("User with name = ", c.Message().Sender.Username, " and ID = ", strconv.Itoa(int(c.Message().Chat.ID)), " started bot")
+
 		name, present := team[c.Message().Chat.ID]
 		if !present {
 			return c.Send(entity.TextUnkownUser)
@@ -41,10 +43,14 @@ func OnStart() tb.HandlerFunc {
 
 func OnText() tb.HandlerFunc {
 	return func(c tb.Context) error {
-		chatId := strconv.Itoa(int(c.Message().Chat.ID))
+		log.Info("User with name = ", c.Message().Sender.Username, " and ID = ", strconv.Itoa(int(c.Message().Chat.ID)), " sent message: ", c.Message().Text)
 
-		log.Info("User ", chatId, " sent message: ", c.Message().Text)
-		usecase.SendNewRecord(team[c.Message().Chat.ID], c.Message().Text)
+		name, present := team[c.Message().Chat.ID]
+		if !present {
+			return c.Send(entity.TextUnkownUser)
+		}
+
+		usecase.SendNewRecord(name, c.Message().Text)
 
 		return c.Send(entity.TextReceived)
 	}

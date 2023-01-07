@@ -2,7 +2,7 @@
 version: '3.8'
 
 services:
-  zarabotokbot-client:
+  alter-finance-bot:
     hostname: alter-finance-bot
     image: alter-finance-bot
     container_name: alter-finance-bot
