@@ -11,3 +11,11 @@ services:
     environment:
     - LOG_LEVEL=DEBUG
     - TG_BOT_KEY=${TG_BOT_KEY}
+    - TG_ADMIN_CHAT_ID=${TG_ADMIN_CHAT_ID}
+    - TG_API_URL=https://api.telegram.org/
+    - TG_NIKITA_ID=${TG_NIKITA_ID}
+    - TG_ARTEM_ID=${TG_ARTEM_ID}
+    - TG_MAKS_ID=${TG_MAKS_ID}
+    - TG_ANTON_ID=${TG_ANTON_ID}
+    - TG_EGOR_ID=${TG_EGOR_ID}
+    - TG_KATE_ID=${TG_KATE_ID}
