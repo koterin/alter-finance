@@ -1,0 +1,13 @@
+---
+version: '3.8'
+
+services:
+  zarabotokbot-client:
+    hostname: alter-finance-bot
+    image: alter-finance-bot
+    container_name: alter-finance-bot
+    build: .
+    restart: unless-stopped
+    environment:
+    - LOG_LEVEL=DEBUG
+    - TG_BOT_KEY=${TG_BOT_KEY}
